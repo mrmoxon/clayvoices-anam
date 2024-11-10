@@ -13,7 +13,7 @@ export class VideoChat {
       this.anamClient = null;
       this.userStream = null;
       this.isVideoEnabled = true;
-      this.isAudioEnabled = true;
+      this.isAudioEnabled = false;
       this.currentStreamingMessage = null;
       this.currentStreamContent = '';
       this.isStreaming = false;
@@ -49,7 +49,7 @@ export class VideoChat {
       
               <div class="video-controls">
                   <button id="toggleVideo" class="control-button">📷</button>
-                  <button id="toggleAudio" class="control-button">🎤</button>
+                  <button id="toggleAudio" class="control-button muted">🎤</button>
               </div>
       
               <button id="startButton" class="control-button play"></button>
@@ -57,19 +57,39 @@ export class VideoChat {
       
           <div class="persona-selector">
               <div class="persona-circle active">
-                  <img src="/media/Leo.png" alt="Leo">
+                  <img src="/media/Leo.png" alt="Dumuzi-Abzu">
+                  <div class="persona-name">
+                      <span class="sumerian">Dumuzi-Abzu</span>
+                      <span class="english">Faithful Son of the Deep</span>
+                  </div>
               </div>
               <div class="persona-circle">
-                  <img src="/media/Enna.png" alt="Enna">
+                  <img src="/media/Enna.png" alt="Ninlil-Ek">
+                  <div class="persona-name">
+                      <span class="sumerian">Ninlil-Ek</span>
+                      <span class="english">Lady of the Open Wind</span>
+                  </div>
               </div>
               <div class="persona-circle">
-                  <img src="/media/Sargon.png" alt="Sargon">
+                  <img src="/media/Sargon.png" alt="Šarru-kīn">
+                  <div class="persona-name">
+                      <span class="sumerian">Šarru-kīn</span>
+                      <span class="english">True King</span>
+                  </div>
               </div>
               <div class="persona-circle">
-                  <img src="/media/Lugan.png" alt="Lugan">
+                  <img src="/media/Lugan.png" alt="Lugal-Gal">
+                  <div class="persona-name">
+                      <span class="sumerian">Lugal-Gal</span>
+                      <span class="english">Great King</span>
+                  </div>
               </div>
               <div class="persona-circle">
-                  <img src="/media/Kuba.png" alt="Kuba">
+                  <img src="/media/Kuba.png" alt="Kulla-Bāni">
+                  <div class="persona-name">
+                      <span class="sumerian">Kulla-Bāni</span>
+                      <span class="english">Creator of All</span>
+                  </div>
               </div>
           </div>
       
@@ -78,40 +98,40 @@ export class VideoChat {
       `;
     }
 
-  addMessageToLog(role, content, isStreaming = false) {
-    const messageLog = document.getElementById('messageLog');
+//   addMessageToLog(role, content, isStreaming = false) {
+//     const messageLog = document.getElementById('messageLog');
     
-    if (isStreaming && this.currentStreamingMessage) {
-        const contentDiv = this.currentStreamingMessage.querySelector('.message-content');
-        contentDiv.textContent = content;
-        messageLog.scrollTop = messageLog.scrollHeight;
-        return;
-    }
+//     if (isStreaming && this.currentStreamingMessage) {
+//         const contentDiv = this.currentStreamingMessage.querySelector('.message-content');
+//         contentDiv.textContent = content;
+//         messageLog.scrollTop = messageLog.scrollHeight;
+//         return;
+//     }
 
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${role.toLowerCase()}`;
+//     const messageDiv = document.createElement('div');
+//     messageDiv.className = `message ${role.toLowerCase()}`;
     
-    const header = document.createElement('div');
-    header.className = 'message-header';
-    header.textContent = role === 'ai' ? 'Dumuzi-Abzu' : 'You';
+//     const header = document.createElement('div');
+//     header.className = 'message-header';
+//     header.textContent = role === 'ai' ? 'Dumuzi-Abzu' : 'You';
     
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'message-content';
-    contentDiv.textContent = content;
+//     const contentDiv = document.createElement('div');
+//     contentDiv.className = 'message-content';
+//     contentDiv.textContent = content;
     
-    messageDiv.appendChild(header);
-    messageDiv.appendChild(contentDiv);
-    messageLog.appendChild(messageDiv);
-    messageLog.scrollTop = messageLog.scrollHeight;
+//     messageDiv.appendChild(header);
+//     messageDiv.appendChild(contentDiv);
+//     messageLog.appendChild(messageDiv);
+//     messageLog.scrollTop = messageLog.scrollHeight;
 
-    if (isStreaming) {
-        this.currentStreamingMessage = messageDiv;
-    }
-  }
+//     if (isStreaming) {
+//         this.currentStreamingMessage = messageDiv;
+//     }
+//   }
 
-  finalizeStreamingMessage() {
-    this.currentStreamingMessage = null;
-  }
+//   finalizeStreamingMessage() {
+//     this.currentStreamingMessage = null;
+//   }
 
   async setupUserMedia() {
     try {

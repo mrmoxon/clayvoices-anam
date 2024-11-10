@@ -89,34 +89,55 @@
   /* Persona selector */
   .persona-selector {
     display: flex;
-    gap: 20px;
+    gap: 2rem;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
   }
   
   .persona-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: var(--border-radius-full);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
     transition: transform 0.3s ease;
-    border: 3px solid transparent;
-    box-shadow: var(--shadow-sm);
   }
-  
+
   .persona-circle:hover {
-    transform: scale(1.1);
-  }
-  
-  .persona-circle.active {
-    border-color: var(--sand-danger);
+    transform: scale(1.05);
   }
   
   .persona-circle img {
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 3px solid transparent;
+    box-shadow: var(--shadow-sm);
+  }
+    
+    .persona-circle.active img {
+        border-color: var(--sand-danger);
+    }
+  
+  .persona-name {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .persona-name .sumerian {
+    font-weight: bold;
+    color: #2c1810;
+    font-size: 0.9rem;
+  }
+  
+  .persona-name .english {
+    font-size: 0.75rem;
+    color: #5c4030;
+    font-style: italic;
   }
   
   /* Stream status */
